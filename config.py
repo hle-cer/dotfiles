@@ -21,9 +21,12 @@ powerline = {
 mod = "mod4"
 terminal = guess_terminal()
 
+mod = "mod4"
+terminal = guess_terminal()
+
 keys = [
     # rofi #
-    Key([mod], "m", lazy.spawn(os.path.expanduser("~/.config/rofi/rofi.sh")), desc="rofi"), 
+    Key([mod], "m", lazy.spawn(os.path.expanduser("~/.config/rofi/rofi.sh")), desc="rofi"),
     # Switch between window
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
@@ -63,7 +66,19 @@ keys = [
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 ]
 
-groups = [Group(i) for i in "asdfuiop"]
+#groups = [Group(i) for i in "asdfuiop"]
+
+groups = [
+    Group('a', label = ""),
+    Group('s', label = ""),
+    Group('d', label = ""),
+    Group('f', label = ""),
+    Group('u', label = ""),
+    Group('i', label = ""),
+    Group('o', label = "󰡗"),
+    Group('p', label = ""),
+
+    ]
 
 for i in groups:
     keys.extend(
@@ -74,26 +89,27 @@ for i in groups:
                 i.name,
                 lazy.group[i.name].toscreen(),
                 desc="Switch to group {}".format(i.name),
-            ),
+           ),
             # mod1 + shift + letter of group = switch to & move focused window to group
-            Key(
-                [mod, "shift"],
-                i.name,
-                lazy.window.togroup(i.name, switch_group=True),
-                desc="Switch to & move focused window to group {}".format(i.name),
-            ),
+            #Key(
+            #    [mod, "shift"],
+            #    i.name,
+            #    lazy.window.togroup(i.name, switch_group=True),
+            #    desc="Switch to & move focused window to group {}".format(i.name),
+            #),
             # Or, use below if you prefer not to switch to that group.
             # # mod1 + shift + letter of group = move focused window to group
-            # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-            #     desc="move focused window to group {}".format(i.name)),
+            Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
+                 desc="move focused window to group {}".format(i.name)),
         ]
     )
 
 layouts = [
     layout.Columns(border_width=2,
+                   font = "JetBrainsMono Nerd Font",
                    margin = 15,
-                   border_focus = '#380070',
-                   border_normal = '0D001A'
+                   border_focus = '#ffffff',
+                   border_normal = '494949'
                    ),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
@@ -121,9 +137,20 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.GroupBox(highlight_method='text', disable_drag = True, active = "#5200a2", inactive='#a1a1a1', background='#1e0038', **powerline),
+                widget.GroupBox(highlight_method='block',
+                                rounded = False,
+                                disable_drag = True,
+                                active = "#494949",
+                                inactive='#494949',
+                                this_current_screen_border="#ffffff",
+                                margin_y = 0,
+                                margin_x = 0,
+                                padding_y = 0,
+                                padding_x = 5,
+                                fontsize = 20,
+                                **powerline),
                 widget.Prompt(),
-                widget.WindowName(background='#0D001A', **powerline),
+                widget.WindowName(background='#151515', **powerline),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
@@ -131,14 +158,13 @@ screens = [
                     name_transform=lambda name: name.upper(),
                     ),
                 # widget.StatusNotifier(),
-                widget.Systray(background='#2b0052', **powerline),
-                widget.Volume(background='#38006c', **powerline),
-                widget.Clock(format="%I:%M %p  %d-%m", background = '#450086', **powerline),
-                widget.QuickExit(background = "#5200a0"),
+                widget.Systray(background='#222222', **powerline),
+                widget.Volume(emoji='true', background='#2f2f2f', **powerline),
+                widget.Clock(format="%I:%M %p  %d-%m", background = '#3c3c3c', **powerline),
+                widget.QuickExit(background = "#494949"),
             ],
             24,
-            background = '#0D001A',
-            margin = 5
+            background = '#151515',
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
@@ -182,7 +208,7 @@ wl_input_rules = None
 
 wmname = "qtile"
 
-    ## autostart ## 
+    ## autostart ##
 
 @hook.subscribe.startup_once
 def autostart():
