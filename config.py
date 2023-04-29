@@ -21,9 +21,6 @@ powerline = {
 mod = "mod4"
 terminal = guess_terminal()
 
-mod = "mod4"
-terminal = guess_terminal()
-
 keys = [
     # rofi #
     Key([mod], "m", lazy.spawn(os.path.expanduser("~/.config/rofi/rofi.sh")), desc="rofi"),
