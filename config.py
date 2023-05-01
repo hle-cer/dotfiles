@@ -66,14 +66,14 @@ keys = [
 #groups = [Group(i) for i in "asdfuiop"]
 
 groups = [
-    Group('a', label = ""),
-    Group('s', label = ""),
-    Group('d', label = ""),
-    Group('f', label = ""),
-    Group('u', label = ""),
-    Group('i', label = ""),
-    Group('o', label = "󰡗"),
-    Group('p', label = ""),
+    Group('a', label = "一"),
+    Group('s', label = "二"),
+    Group('d', label = "三"),
+    Group('f', label = "四"),
+    Group('u', label = "五"),
+    Group('i', label = "六"),
+    Group('o', label = "七"),
+    Group('p', label = "八"),
 
     ]
 
@@ -104,7 +104,7 @@ for i in groups:
 layouts = [
     layout.Columns(border_width=2,
                    font = "JetBrainsMono Nerd Font",
-                   margin = 15,
+                   margin = 7,
                    border_focus = '#ffffff',
                    border_normal = '494949'
                    ),
@@ -124,30 +124,36 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="LiterationMono NF",
-    fontsize=12,
+    font="JetBrainsMono NF",
+    fontsize=15,
     padding=3,
 )
 extension_defaults = widget_defaults.copy()
 
 screens = [
-    Screen(
+    Screen(        bottom=bar.Gap(7),
+                   left=bar.Gap(7),
+                   right=bar.Gap(7),
         top=bar.Bar(
             [
+                widget.Prompt(),
+                widget.WindowName(background='#151515', **powerline),
                 widget.GroupBox(highlight_method='block',
                                 rounded = False,
                                 disable_drag = True,
                                 active = "#494949",
                                 inactive='#494949',
                                 this_current_screen_border="#ffffff",
-                                margin_y = 0,
+                                margin_y = 3,
                                 margin_x = 0,
-                                padding_y = 0,
+                                padding_y = 5,
                                 padding_x = 5,
                                 fontsize = 20,
+                                font = "JetBrainsMono NF",
                                 **powerline),
-                widget.Prompt(),
-                widget.WindowName(background='#151515', **powerline),
+                widget.Spacer(**powerline),
+
+
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
@@ -160,8 +166,9 @@ screens = [
                 widget.Clock(format="%I:%M %p  %d-%m", background = '#3c3c3c', **powerline),
                 widget.QuickExit(background = "#494949"),
             ],
-            24,
+            26,
             background = '#151515',
+            margin = [0,0,7,0],
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
