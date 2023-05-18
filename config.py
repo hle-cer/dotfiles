@@ -1,6 +1,6 @@
 
 
-    ### Vid Cemazar Config ###
+    ### qtile Config ###
 
 
 import os
@@ -10,12 +10,13 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 from qtile_extras import widget
-from qtile_extras.widget.decorations import PowerLineDecoration
+from qtile_extras.widget.decorations import RectDecoration
 
-powerline = {
+decoration_group = {
     "decorations": [
-        PowerLineDecoration(path='forward_slash')
-    ]
+        RectDecoration(colour="#232831", radius=10, filled=True, padding_y=2, padding_x=0, group=True)
+    ],
+    "padding": 10,
 }
 
 mod = "mod4"
@@ -60,20 +61,20 @@ keys = [
     Key([mod, "shift"], "c", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    Key([mod], "r", lazy.spawcmd(), desc="Spawn a command using a prompt widget"),
 ]
 
 #groups = [Group(i) for i in "asdfuiop"]
 
 groups = [
-    Group('a', label = "一"),
-    Group('s', label = "二"),
-    Group('d', label = "三"),
-    Group('f', label = "四"),
-    Group('u', label = "五"),
-    Group('i', label = "六"),
-    Group('o', label = "七"),
-    Group('p', label = "八"),
+    Group('a', label = ""),
+    Group('s', label = ""),
+    Group('d', label = "󰉋"),
+    Group('f', label = ""),
+    Group('u', label = ""),
+    Group('i', label = "󰈫"),
+    Group('o', label = "󰕧"),
+    Group('p', label = "󰊗"),
 
     ]
 
@@ -104,7 +105,7 @@ for i in groups:
 layouts = [
     layout.Columns(border_width=2,
                    font = "JetBrainsMono Nerd Font",
-                   margin = 7,
+                   margin = 3,
                    border_focus = '#ffffff',
                    border_normal = '494949'
                    ),
@@ -124,34 +125,35 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="JetBrainsMono NF",
-    fontsize=15,
+    font="JetBrainsMono Nerd Font",
+    fontsize=12,
     padding=3,
 )
 extension_defaults = widget_defaults.copy()
 
 screens = [
-    Screen(        bottom=bar.Gap(7),
-                   left=bar.Gap(7),
-                   right=bar.Gap(7),
+    Screen(        bottom=bar.Gap(3),
+                   left=bar.Gap(3),
+                   right=bar.Gap(3),
         top=bar.Bar(
             [
                 widget.Prompt(),
-                widget.WindowName(background='#151515', **powerline),
-                widget.GroupBox(highlight_method='block',
+                widget.WindowName(),
+                widget.GroupBox(highlight_method='text',
                                 rounded = False,
                                 disable_drag = True,
                                 active = "#494949",
                                 inactive='#494949',
                                 this_current_screen_border="#ffffff",
-                                margin_y = 3,
+                                margin_y = 2,
                                 margin_x = 0,
                                 padding_y = 5,
                                 padding_x = 5,
                                 fontsize = 20,
                                 font = "JetBrainsMono NF",
-                                **powerline),
-                widget.Spacer(**powerline),
+                                **decoration_group,
+                                ),
+                widget.Spacer(),
 
 
                 widget.Chord(
@@ -161,14 +163,15 @@ screens = [
                     name_transform=lambda name: name.upper(),
                     ),
                 # widget.StatusNotifier(),
-                widget.Systray(background='#222222', **powerline),
-                widget.Volume(emoji='true', background='#2f2f2f', **powerline),
-                widget.Clock(format="%I:%M %p  %d-%m", background = '#3c3c3c', **powerline),
-                widget.QuickExit(background = "#494949"),
+                widget.Systray(),
+                widget.Spacer(length=10),
+                widget.Volume(**decoration_group),
+                widget.Clock(format="%I:%M %p  %d-%m" ,**decoration_group),
+                widget.Spacer(length=10),
             ],
             26,
-            background = '#151515',
-            margin = [0,0,7,0],
+            background = '#2E3440',
+            margin = [6,0,3,0],
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
@@ -218,3 +221,11 @@ wmname = "qtile"
 def autostart():
     home = os.path.expanduser('~/.config/qtile/autostart.sh')
     subprocess.Popen([home])
+
+    #colors#
+
+# 1 - 232831
+# 2 - 2E3440
+# 3 - 3B4252
+# 4 - 434C5E
+# 5 - 4C566A
