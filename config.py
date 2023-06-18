@@ -1,7 +1,8 @@
 
-
-    ### qtile Config ###
-
+#                                           #                               
+##     █▀▀ █▀█ █▄░█ █▀▀ █ █▀▀ ░ █▀█ █▄█    ##
+##     █▄▄ █▄█ █░▀█ █▀░ █ █▄█ ▄ █▀▀ ░█░    ##
+#                                           #
 
 import os
 import subprocess
@@ -24,7 +25,13 @@ terminal = guess_terminal()
 
 keys = [
     # rofi #
-    Key([mod], "m", lazy.spawn(os.path.expanduser("~/.config/rofi/rofi.sh")), desc="rofi"),
+    Key([mod,], "m", lazy.spawn(os.path.expanduser("~/.config/rofi/rofi.sh")), desc="rofi"),
+    # scrot #
+    Key([mod, "shift"], "t", lazy.spawn(os.path.expanduser("~/screenshot")), desc="scrot"),
+    # qemu #
+    Key([mod, "shift"], "b", lazy.spawn(os.path.expanduser("~/win10.sh")), desc="WindowsVM"),
+    # mouse accel #
+    Key([mod], "[", lazy.spawn(os.path.expanduser("mouse.sh")), desc="remove mouse accel"),
     # Switch between window
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
@@ -67,14 +74,14 @@ keys = [
 #groups = [Group(i) for i in "asdfuiop"]
 
 groups = [
-    Group('a', label = ""),
-    Group('s', label = ""),
-    Group('d', label = "󰉋"),
-    Group('f', label = ""),
-    Group('u', label = ""),
-    Group('i', label = "󰈫"),
-    Group('o', label = "󰕧"),
-    Group('p', label = "󰊗"),
+    Group('a', label = "1"),
+    Group('s', label = "2"),
+    Group('d', label = "3"),
+    Group('f', label = "4"),
+    Group('u', label = "5"),
+    Group('i', label = "6"),
+    Group('o', label = "7"),
+    Group('p', label = "8"),
 
     ]
 
@@ -104,10 +111,11 @@ for i in groups:
 
 layouts = [
     layout.Columns(border_width=2,
-                   font = "JetBrainsMono Nerd Font",
+                   font = "Inconsolata LGC Nerd Font",
                    margin = 3,
-                   border_focus = '#ffffff',
-                   border_normal = '494949'
+                   border_focus = '#cba6f7',
+                   border_normal = '494949',
+                   border_on_single=True,
                    ),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
@@ -125,7 +133,7 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="JetBrainsMono Nerd Font",
+    font="Inconsolata LGC Nerd Font",
     fontsize=12,
     padding=3,
 )
@@ -137,24 +145,26 @@ screens = [
                    right=bar.Gap(3),
         top=bar.Bar(
             [
-                widget.Prompt(),
-                widget.WindowName(),
+
+                            ## Widgets ##
+
                 widget.GroupBox(highlight_method='text',
                                 rounded = False,
                                 disable_drag = True,
-                                active = "#494949",
-                                inactive='#494949',
-                                this_current_screen_border="#ffffff",
+                                active = "#979797",
+                                inactive="#494949",
+                                this_current_screen_border="#cba6f7",
+                                #block_highlight_text_color="#a6e3a1",
+                                #highlight_color=['1e1e2e', '1e1e2e'],
                                 margin_y = 2,
                                 margin_x = 0,
                                 padding_y = 5,
                                 padding_x = 5,
-                                fontsize = 20,
-                                font = "JetBrainsMono NF",
-                                **decoration_group,
+                                fontsize = 18,
+                                font = "Inconsolata LGC Nerd Font",
                                 ),
-                widget.Spacer(),
-
+                widget.Spacer(20),
+                widget.WindowTabs(),
 
                 widget.Chord(
                     chords_colors={
@@ -162,16 +172,37 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                     ),
-                # widget.StatusNotifier(),
+                
+                
+                #widget.Pomodoro(color_active = '#ffffff',
+                #                color_break = '#ffffff',
+                #                color_inactive = '#ffffff',
+                #                length_pomodori = 45,
+                #                length_short_break = 10,
+                #                length_long_break = 20),
+                #widget.CPUGraph(border_width = 0, type='line', line_width=1, graph_color = '#ffffff', margin_y = 6),
+                #widget.MemoryGraph(border_width = 0, type='line', line_width=1, graph_color = '#ffffff', margin_y = 6),
+                widget.Sep(),
+                widget.Spacer(length=10),
+                widget.CPU(),
+                widget.Spacer(length=5),
+                widget.Memory(),
+                widget.Spacer(length=10),
+                widget.NvidiaSensors(),
+                widget.Spacer(length=10),
+                widget.Sep(),
+                widget.Spacer(length=5),
                 widget.Systray(),
                 widget.Spacer(length=10),
-                widget.Volume(**decoration_group),
-                widget.Clock(format="%I:%M %p  %d-%m" ,**decoration_group),
+                widget.Volume(),
                 widget.Spacer(length=10),
+                widget.Clock(format="%I:%M %p  %d-%m"),
+                widget.Spacer(length=10),
+                widget.CurrentLayoutIcon(scale=0.7, background = "#cba6f7"),
             ],
-            26,
-            background = '#2E3440',
-            margin = [6,0,3,0],
+            28,
+            background = '#1e1e2e',
+            margin = [6,6,3,6],
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
@@ -221,11 +252,3 @@ wmname = "qtile"
 def autostart():
     home = os.path.expanduser('~/.config/qtile/autostart.sh')
     subprocess.Popen([home])
-
-    #colors#
-
-# 1 - 232831
-# 2 - 2E3440
-# 3 - 3B4252
-# 4 - 434C5E
-# 5 - 4C566A
