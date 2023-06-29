@@ -1,0 +1,27 @@
+# Beryllium
+
+spacing         = 3
+hide_ascii      = true
+key_color       = "#cba6f7"
+separator       = ""
+
+[box]
+border          = "rounded"
+visible         = true
+title           ="Catppuccin-Mocha"
+
+[palette]
+glyph           = "  "
+visible         = true
+
+[bar]
+glyph           = ""
+hide_delimiters = true
+visible         = true
+
+[box.inner_margin]
+x               = 2
+y               = 1
+
+[custom_ascii]
+color           = "#cba6f7"
