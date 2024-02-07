@@ -1,0 +1,52 @@
+
+################
+# Helix Config #
+################
+
+# Theme
+theme = "tokyonight"
+
+# General
+[editor]
+cursorline = true # Highlight all lines with a cursor
+
+# Fast autosuggest
+idle-timeout = 0
+completion-trigger-len = 1
+
+# Status line
+[editor.statusline]
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+left = ["mode", "separator", "file-name"]
+center = ["spinner"]
+right = ["diagnostics", "selections", "position", "file-encoding"]
+separator = "󰇙"
+
+
+[editor.indent-guides]
+character = "󰇙"
+render = true
+
+[editor.lsp]
+auto-signature-help = false # Disable automatically popups of signature parameter help
+display-messages = true # Show LSP messages in the status line
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+# Keybinds
+[keys.normal]
+C-n = "file_picker" # Opens a file picker
+C-b = "buffer_picker" # Opens a buffer picker
+C-v = "vsplit" # Vertical right split
+C-h = "hsplit" # Horizontal bottom split
+C-q = "wclose" # Close current window
+C-o = "wonly" # Only keep the current window, closing all the others
+"A-," = "goto_previous_buffer"
+"A-." = "goto_next_buffer"
+[keys.insert]
+"A-x" = "normal_mode" # Enter normal mode

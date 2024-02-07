@@ -1,0 +1,11 @@
+[[language]]
+name = "cpp"
+file-types = ["cc", "cpp", "c++", "cxx"]
+comment-token = "//"
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "bash"
+file-types = ["sh", "bash"]
+comment-token = "//"
+indent = { tab-width = 4, unit = "    " }
