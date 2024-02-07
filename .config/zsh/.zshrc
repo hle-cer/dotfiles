@@ -19,7 +19,7 @@ setopt inc_append_history
 setopt share_history
 
 #completions
-setopt auto_menu         # show completion menu on succesive tab press
+setopt auto_menu
 setopt complete_in_word
 setopt completealiases
 setopt always_to_end
@@ -95,7 +95,7 @@ alias cm="chmod +x"
 alias ls="exa --icons -1"
 
 # Mouse
-# alias rma="~/./.local/bin/mouse.sh"
+alias rma="~/./.local/bin/xinput.sh"
 
 # Git
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
