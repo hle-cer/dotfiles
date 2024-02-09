@@ -9,12 +9,16 @@ theme = "tokyonight"
 # General
 [editor]
 cursorline = true # Highlight all lines with a cursor
+mouse = false # makes mouse useless
+middle-click-paste = false # disables the most annoying feature in existance
+bufferline = "multiple" # draws a line of opened buffers at the top (simmilar to tabline)
 
-# Fast autosuggest
-idle-timeout = 0
-completion-trigger-len = 1
+# Auto-completion
+auto-completion = true # enables or disables auto-completion
+idle-timeout = 0 # sets the timeout before showing auto-complete popup in miliseconds
+completion-trigger-len = 1 # how many characters need to be typed before enabling auto-complete
+completion-replace = true # replaces the whole word when completing
 
-# Status line
 [editor.statusline]
 mode.normal = "NORMAL"
 mode.insert = "INSERT"
@@ -24,6 +28,8 @@ center = ["spinner"]
 right = ["diagnostics", "selections", "position", "file-encoding"]
 separator = "󰇙"
 
+[editor.file-picker]
+hidden = false # don't ignore hidden files
 
 [editor.indent-guides]
 character = "󰇙"
@@ -40,13 +46,13 @@ select = "underline"
 
 # Keybinds
 [keys.normal]
-C-n = "file_picker" # Opens a file picker
-C-b = "buffer_picker" # Opens a buffer picker
-C-v = "vsplit" # Vertical right split
-C-h = "hsplit" # Horizontal bottom split
-C-q = "wclose" # Close current window
-C-o = "wonly" # Only keep the current window, closing all the others
-"A-," = "goto_previous_buffer"
-"A-." = "goto_next_buffer"
+"C-n" = "file_picker" # Opens a file picker
+"C-b" = "buffer_picker" # Opens a buffer picker
+"C-v" = "vsplit" # Vertical right split
+"C-h" = "hsplit" # Horizontal bottom split
+"C-q" = "wclose" # Close current window
+"C-o" = "wonly" # Only keep the current window, closing all the others
+"S-tab" = "goto_previous_buffer"
+"tab" = "goto_next_buffer"
 [keys.insert]
 "A-x" = "normal_mode" # Enter normal mode
