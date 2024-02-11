@@ -18,7 +18,7 @@ setopt hist_verify
 setopt inc_append_history
 setopt share_history
 
-#completions
+# Completions
 setopt auto_menu
 setopt complete_in_word
 setopt completealiases
@@ -31,8 +31,11 @@ setopt always_to_end
 #    ███████╗██╔╝ ██╗██║     ╚██████╔╝██║  ██║   ██║   ███████║
 #    ╚══════╝╚═╝  ╚═╝╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝
                                                     
-export EDITOR="helix"
+export EDITOR="hx"
 export BROWSER="firefox"
+export IMAGE_VIEWER="feh"
+export SHELL="/usr/bin/zsh"
+
 
 #    ██████╗ ██████╗  ██████╗ ███╗   ███╗██████╗ ████████╗
 #    ██╔══██╗██╔══██╗██╔═══██╗████╗ ████║██╔══██╗╚══██╔══╝
@@ -71,17 +74,9 @@ alias pacs="sudo pacman -S --needed"
 alias pacr="sudo pacman -Rns"
 alias pacss="pacman -Ss"
 
-# Helix
-alias hx="helix"
-alias shx="sudo helix"
-
-# Ranger
-alias rr="ranger"
-alias srr="sudo ranger"
-
 # Qtile
-alias qconf="helix ~/.config/qtile/config.py"
-alias qkey="helix ~/.config/qtile/keybindings.py"
+alias qconf="hx ~/.config/qtile/config.py"
+alias qkey="hx ~/.config/qtile/keybindings.py"
 
 # Zsh
 alias zshconf="helix ~/.config/zsh/.zshrc"
@@ -92,7 +87,7 @@ alias tmhx="~/./projects/templates/release && hx main.cpp" # also launch the tem
 
 # QOL
 alias cm="chmod +x"
-alias ls="exa --icons -1"
+alias ls="lsd"
 
 # Mouse
 alias rma="~/./.local/bin/xinput.sh"
@@ -110,7 +105,7 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 PLUGINS=~/.config/zsh/plugins
 
 # auto-suggest
-source $PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source $PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # syntax-highliting
 source $PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
