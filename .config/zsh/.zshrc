@@ -105,7 +105,7 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 PLUGINS=~/.config/zsh/plugins
 
 # auto-suggest
-# source $PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # syntax-highliting
 source $PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
