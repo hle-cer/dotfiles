@@ -29,7 +29,7 @@ decoration_group = {
 # Variables
 mod = "mod4"
 terminal = "alacritty"
-browser = "brave"
+browser = "firefox"
 
 groups = [
     Group('a', label = ""),
@@ -95,7 +95,7 @@ screens = [
                     active = "#979797",
                     inactive="#494949",
                     this_current_screen_border=main,
-                    margin_y = 3,
+                    margin_y = 2,
                     margin_x = 0,
                     padding_y = 0,
                     fontsize = 20,
@@ -115,6 +115,7 @@ screens = [
                 #-- Clock ------------------------------#
                 widget.Clock(
                     format=" %H:%M  %b %d",
+                    # font="JetBrainsMono Nerd Font bold",
                     **decoration_group
                     ),
                 #---------------------------------------#

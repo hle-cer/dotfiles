@@ -8,7 +8,7 @@ from libqtile.utils import guess_terminal
 
 mod = "mod4"
 terminal = "alacritty"
-browser = "brave"
+browser = "firefox"
 
 
 keys = [
@@ -23,8 +23,7 @@ keys = [
     Key([mod], "down", lazy.spawn(os.path.expanduser("playerctl play-pause")), desc="play/pause"),
     Key([mod], "right", lazy.spawn(os.path.expanduser("playerctl next")), desc="next"),
     Key([mod], "left", lazy.spawn(os.path.expanduser("playerctl previous")), desc="prev"),
-    Key([mod], "up", lazy.spawn(os.path.expanduser("playerctl open")), desc="open"),
-    
+    Key([mod], "up", lazy.spawn(os.path.expanduser("playerctl open")), desc="open"),    
 
     # Volume
     Key([], "XF86AudioMicMute", lazy.spawn(os.path.expanduser("~/.config/qtile/scripts/volume.sh mic")), desc="mute/unmute mic"),
@@ -40,8 +39,6 @@ keys = [
     Key([], "Print", lazy.spawn(os.path.expanduser("~/.config/qtile/scripts/screenshot.sh ")), desc="normal screenshot"),
     Key(["shift"], "Print", lazy.spawn(os.path.expanduser("~/.config/qtile/scripts/screenshot.sh select")), desc="selection screenshot"),
     Key(["control"], "Print", lazy.spawn(os.path.expanduser("~/.config/qtile/scripts/screenshot.sh window")), desc="window screenshot"),
-
-    # Hotspot
 
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
@@ -64,10 +61,6 @@ keys = [
 
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
 
-
-    # Toggle between split and unsplit sides of stack
-    # Key([mod, "shift"], "Return", lazy.layout.toggle_split(), desc="Toggle between split and unsplit sides of stack"),
-
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "w", lazy.spawn(browser), desc="Launch browser"),
 
@@ -76,9 +69,10 @@ keys = [
     Key([mod, "control"], "r", lazy.restart(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
 
-
     # Layouts
     Key([mod], "1", lazy.window.toggle_floating(), desc="Toggle floating layout"),
     Key([mod], "2", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen layout"),
     Key([mod], "3", lazy.window.toggle_minimize(), desc="Toggle minimization on focused window"),
+
+    Key([], "XF86LaunchA", lazy.spawn(os.path.expanduser("unclutter -idle 0")), desc="rofi"),
 ]
