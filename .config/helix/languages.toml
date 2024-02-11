@@ -5,6 +5,12 @@ comment-token = "//"
 indent = { tab-width = 4, unit = "    " }
 
 [[language]]
+name = "c"
+file-types = ["c"]
+comment-token = "//"
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
 name = "bash"
 file-types = ["sh", "bash"]
 comment-token = "//"
