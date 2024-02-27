@@ -8,6 +8,7 @@ theme = "tokyonight"
 
 # General
 [editor]
+line-number = "relative" # better line numbers (only in normal and select mode)
 cursorline = true # Highlight all lines with a cursor
 mouse = false # makes mouse useless
 middle-click-paste = false # disables the most annoying feature in existance
@@ -19,21 +20,22 @@ idle-timeout = 0 # sets the timeout before showing auto-complete popup in milise
 completion-trigger-len = 1 # how many characters need to be typed before enabling auto-complete
 completion-replace = true # replaces the whole word when completing
 
+# Bottom bar
 [editor.statusline]
 mode.normal = "NORMAL"
 mode.insert = "INSERT"
 mode.select = "SELECT"
-left = ["mode", "separator", "file-name"]
-center = ["spinner"]
-right = ["diagnostics", "selections", "position", "file-encoding"]
+left = ["mode", "read-only-indicator", "diagnostics"]
+center = ["file-name"]
+right = ["position"]
 separator = "󰇙"
 
 [editor.file-picker]
 hidden = false # don't ignore hidden files
 
 [editor.indent-guides]
-character = "󰇙"
-render = true
+character = "󰇙" 
+render = true # set to "false" to not see these every tab
 
 [editor.lsp]
 auto-signature-help = false # Disable automatically popups of signature parameter help
@@ -46,13 +48,20 @@ select = "underline"
 
 # Keybinds
 [keys.normal]
+"H" = "swap_view_left"  # only when using multiple windows
+"J" = "swap_view_down"  # only when using multiple windows
+"K" = "swap_view_up"    # only when using multiple windows
+"L" = "swap_view_right" # only when using multiple windows
+"C-q" = ":buffer-close" # close current buffer and check if its saved
+"C-Q" = ":buffer-close!" # close current buffer no matter what
+"C-o" = ":buffer-close-others" # close all buffers but current and check if ther are saved
+"C-O" = ":buffer-close-others!" # close all buffers but current no matter what
+"esc" = ["collapse_selection", "keep_primary_selection"] # makes esc also delete selections like multiple cursors
 "C-n" = "file_picker" # Opens a file picker
 "C-b" = "buffer_picker" # Opens a buffer picker
 "C-v" = "vsplit" # Vertical right split
 "C-h" = "hsplit" # Horizontal bottom split
-"C-q" = "wclose" # Close current window
-"C-o" = "wonly" # Only keep the current window, closing all the others
-"S-tab" = "goto_previous_buffer"
-"tab" = "goto_next_buffer"
+"S-tab" = "goto_previous_buffer" # switches tabs
+"tab" = "goto_next_buffer" # switches tabs
 [keys.insert]
 "A-x" = "normal_mode" # Enter normal mode
