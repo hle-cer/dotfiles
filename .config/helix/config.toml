@@ -13,6 +13,7 @@ cursorline = true # Highlight all lines with a cursor
 mouse = false # makes mouse useless
 middle-click-paste = false # disables the most annoying feature in existance
 bufferline = "multiple" # draws a line of opened buffers at the top (simmilar to tabline)
+auto-info = false # disables menu hints by default
 
 # Auto-completion
 auto-completion = true # enables or disables auto-completion
@@ -48,10 +49,11 @@ select = "underline"
 
 # Keybinds
 [keys.normal]
-"H" = "swap_view_left"  # only when using multiple windows
-"J" = "swap_view_down"  # only when using multiple windows
-"K" = "swap_view_up"    # only when using multiple windows
-"L" = "swap_view_right" # only when using multiple windows
+"M" = ":toggle-option auto-info" # toggles the visibility of the menu hints
+"H" = "jump_view_left"  # only when using multiple windows
+"J" = "jump_view_down"  # only when using multiple windows
+"K" = "jump_view_up"    # only when using multiple windows
+"L" = "jump_view_right" # only when using multiple windows
 "C-q" = ":buffer-close" # close current buffer and check if its saved
 "C-Q" = ":buffer-close!" # close current buffer no matter what
 "C-o" = ":buffer-close-others" # close all buffers but current and check if ther are saved
@@ -59,8 +61,8 @@ select = "underline"
 "esc" = ["collapse_selection", "keep_primary_selection"] # makes esc also delete selections like multiple cursors
 "C-n" = "file_picker" # Opens a file picker
 "C-b" = "buffer_picker" # Opens a buffer picker
-"C-v" = "vsplit" # Vertical right split
-"C-h" = "hsplit" # Horizontal bottom split
+"C-v" = ":vnew" # Vertical right split
+"C-h" = ":hnew" # Horizontal bottom split
 "S-tab" = "goto_previous_buffer" # switches tabs
 "tab" = "goto_next_buffer" # switches tabs
 [keys.insert]
