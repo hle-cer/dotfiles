@@ -59,13 +59,13 @@ keys = [
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
 
-    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
-
+    # Windows
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "w", lazy.spawn(browser), desc="Launch browser"),
-
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "c", lazy.window.kill(), desc="Kill focused window"),
+    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+
+    # qtile
     Key([mod, "control"], "r", lazy.restart(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
 
@@ -73,6 +73,5 @@ keys = [
     Key([mod], "1", lazy.window.toggle_floating(), desc="Toggle floating layout"),
     Key([mod], "2", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen layout"),
     Key([mod], "3", lazy.window.toggle_minimize(), desc="Toggle minimization on focused window"),
-
-    Key([], "XF86LaunchA", lazy.spawn(os.path.expanduser("unclutter -idle 0")), desc="rofi"),
+    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
 ]
