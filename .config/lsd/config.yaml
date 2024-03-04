@@ -1,7 +1,7 @@
-# == Classic ==
+# Classic
 classic: false
 
-# == Blocks ==
+# Blocks
 blocks:
   - permission
   - user
@@ -10,56 +10,56 @@ blocks:
   - date
   - name
 
-# == Color ==
+# Color
 color:
   when: auto
   theme: default
 
-# == Date ==
+# Date
 date: date
 
-# == Dereference ==
+# Dereference
 dereference: false
 
-# == Icons ==
+# Icons
 icons:
   when: auto
   theme: fancy
   separator: " "
 
-# == Indicators ==
+# Indicators
 indicators: false
 
-# == Layout ==
+# Layout
 layout: oneline
 
-# == Recursion ==
+# Recursion
 recursion:
   enabled: false
 
-# == Size ==
+# Size
 size: default
 
-# == Permission ==
+# Permission
 permission: rwx
 
-# == Sorting ==
+# Sorting
 sorting:
   column: name
   reverse: false
   dir-grouping: none
 
-# == No Symlink ==
+# No Symlink
 no-symlink: false
 
-# == Total size ==
+# Total size
 total-size: false
 
-# == Hyperlink ==
+# Hyperlink
 hyperlink: never
 
-# == Symlink arrow ==
+# Symlink arrow
 symlink-arrow: ⇒
 
-# == Header ==
+# Header
 header: false
