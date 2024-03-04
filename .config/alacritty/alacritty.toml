@@ -1,8 +1,12 @@
-import = ["/home/vid/.config/alacritty/theme.toml"]
+
+## Alacritty Config ##
+
+import = ["/home/vid/.config/alacritty/theme.toml"] # Import my theme.
 
 [colors]
 draw_bold_text_with_bright_colors = true
 
+# Fonts
 [font]
 size = 10
 
@@ -27,23 +31,19 @@ action = "SpawnNewInstance"
 key = "Return"
 mods = "Super|Shift"
 
-[scrolling]
-history = 10000
-multiplier = 3
-
 [selection]
 save_to_clipboard = false
 
-[shell]
+[shell] # The default terminal shell.
 program = "/usr/bin/zsh"
-
-[window]
-opacity = 1
 
 [window.class]
 general = "Alacritty"
 instance = "Alacritty"
 
-[window.padding]
+[window.padding] # Padding on the sides of the window.
 x = 5
 y = 5
+
+[cursor.style]
+shape = "Beam" # Change the cursor shape (Options: Beam, Block, Underline)

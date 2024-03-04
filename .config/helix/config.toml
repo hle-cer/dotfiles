@@ -28,7 +28,7 @@ mode.insert = "INSERT"
 mode.select = "SELECT"
 left = ["mode", "read-only-indicator", "diagnostics"]
 center = ["file-name"]
-right = ["position"]
+right = ["position", "separator", "total-line-numbers"]
 separator = "󰇙"
 
 [editor.file-picker]

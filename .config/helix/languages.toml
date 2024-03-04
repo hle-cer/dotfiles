@@ -12,6 +12,7 @@ indent = { tab-width = 4, unit = "    " }
 
 [[language]]
 name = "bash"
-file-types = ["sh", "bash"]
+file-types = ["sh", "bash", ".zshrc", "conf"]
+shebangs = ["sh", "bash"]
 comment-token = "//"
 indent = { tab-width = 4, unit = "    " }
