@@ -1,7 +1,4 @@
-
-#     config.py 
-
-# All the needed python libraies
+# Importing necessary libraries
 import os
 import subprocess
 import dbus_next
@@ -13,7 +10,7 @@ from libqtile.utils import guess_terminal
 from qtile_extras import widget
 from qtile_extras.widget.decorations import RectDecoration
 
-#colors
+# Colors
 main = '#7aa2f7'
 sec = '#f7768e'
 forg = '#9aa5ce'
@@ -31,164 +28,133 @@ mod = "mod4"
 terminal = "alacritty"
 browser = "firefox"
 
+# Groups
 groups = [
-    Group('a', label = ""),
-    Group('s', label = ""),
-    Group('d', label = ""),
-    Group('f', label = "󰙯"),
-    Group('u', label = ""),
-    Group('i', label = ""),
-    Group('o', label = ""),
-    Group('p', label = ""),
-    ]
+    Group('a', label=""),
+    Group('s', label=""),
+    Group('d', label=""),
+    Group('f', label="󰙯"),
+    Group('u', label=""),
+    Group('i', label=""),
+    Group('o', label=""),
+    Group('p', label=""),
+]
 
+# Keybindings for switching between groups
 for i in groups:
-    keys.extend(
-        [
-            # mod1 + letter of group = switch to group
-            Key(
-                [mod],
-                i.name,
-                lazy.group[i.name].toscreen(),
-                desc="Switch to group {}".format(i.name),
-            ),
-            Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-                desc="move focused window to group {}".format(i.name)),
-        ]
-    )
+    keys.extend([
+        Key([mod], i.name, lazy.group[i.name].toscreen(), desc="Switch to group {}".format(i.name)),
+        Key([mod, "shift"], i.name, lazy.window.togroup(i.name), desc="Move focused window to group {}".format(i.name)),
+    ])
 
+# Layouts
 layouts = [
     layout.Columns(
-            border_width=2,
-            font = "JetBrainsMono Nerd Font",
-            margin = 3,
-            border_focus = main,
-            border_normal = '494949',
-            border_on_single=True,
-            ),
-
+        border_width=2,
+        font="JetBrainsMono Nerd Font",
+        margin=3,
+        border_focus=main,
+        border_normal='494949',
+        border_on_single=True,
+    ),
     layout.Max(),
-    ]
+]
+
+# Default widget settings
 widget_defaults = dict(
     font="JetBrainsMono Nerd Font",
     fontsize=14,
     padding=3,
     foreground=forg
 )
+
 extension_defaults = widget_defaults.copy()
 
+# Screens configuration
 screens = [
-    Screen(        bottom=bar.Gap(3),
-                   left=bar.Gap(3),
-                   right=bar.Gap(3),
+    Screen(
+        bottom=bar.Gap(3),
+        left=bar.Gap(3),
+        right=bar.Gap(3),
         top=bar.Bar(
-[
-
-                            ## Widgets ##
-
-
-                #-- Workspaces -------------------------#
+            [
+                # Workspaces
                 widget.GroupBox(
                     highlight_method='text',
-                    rounded = False,
-                    disable_drag = True,
-                    active = "#979797",
+                    rounded=False,
+                    disable_drag=True,
+                    active="#979797",
                     inactive="#494949",
                     this_current_screen_border=main,
-                    margin_y = 2,
-                    margin_x = 0,
-                    padding_y = 0,
-                    fontsize = 20,
-                    font = "JetBrainsMono Nerd Font",
+                    margin_y=2,
+                    margin_x=0,
+                    padding_y=0,
+                    fontsize=20,
+                    font="JetBrainsMono Nerd Font",
                     **decoration_group
-                    ),
-                #---------------------------------------#
-
+                ),
                 widget.Spacer(10),
-    
-                #-- System tray ------------------------#
+
+                # System tray
                 widget.Systray(),
-                #---------------------------------------#
-    
                 widget.Spacer(),
 
-                #-- Clock ------------------------------#
+                # Clock
                 widget.Clock(
                     format=" %H:%M  %b %d",
-                    # font="JetBrainsMono Nerd Font bold",
                     **decoration_group
-                    ),
-                #---------------------------------------#
-                
+                ),
                 widget.Spacer(),
-                
-                #-- Connection info --------------------#
+
+                # Connection info
                 widget.Wlan(
                     format='  {essid}',
                     **decoration_group
-                    ),
-                #---------------------------------------#
-        
+                ),
                 widget.Spacer(5),
 
-                #-- Volume -----------------------------#
+                # Volume
                 widget.Volume(
                     fmt='󰕾 {}',
                     **decoration_group
-                    ),
-                #---------------------------------------#
-    
+                ),
                 widget.Spacer(5),
 
-                #-- Battery [install upower] -----------#
-                widget.Spacer(
-                    10,
-                    **decoration_group
-                     ),
+                # Battery (install upower)
+                widget.Spacer(10, **decoration_group),
                 widget.UPowerWidget(
-                    border_colour = forg,
-                    border_critical_colour = '#f7768e',
-                    border_charge_colour = forg,
-                    fill_normal = forg,
-                    fill_critical = forg,
-                    fill_low = forg,
-                    text_charging = '({percentage:.0f}%)󰚥 ',
-                    text_discharging = '{percentage:.0f}% ',
+                    border_colour=forg,
+                    border_critical_colour='#f7768e',
+                    border_charge_colour=forg,
+                    fill_normal=forg,
+                    fill_critical=forg,
+                    fill_low=forg,
+                    text_charging='({percentage:.0f}%)󰚥 ',
+                    text_discharging='{percentage:.0f}% ',
                     **decoration_group
-                    ),
-                widget.Spacer(
-                    10,
-                    **decoration_group
-                    ),
-                #---------------------------------------#
+                ),
+                widget.Spacer(10, **decoration_group),
             ],
             28,
-            background = '#00000000',
-            margin = [6,6,3,6],
-
+            background='#00000000',
+            margin=[6, 6, 3, 6],
         ),
     ),
 ]
 
-# Drag floating layouts.
+# Drag floating layouts
 mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
     Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 
-dgroups_key_binder = None
-dgroups_app_rules = []  # type: list
-follow_mouse_focus = True
-bring_front_click = False
-cursor_warp = False
+# Floating layout rules
 floating_layout = layout.Floating(
-
-            font = "JetBrainsMono Nerd Font",
-            border_focus = main,
-            border_normal = '494949',
-            border_width=2,
-
+    font="JetBrainsMono Nerd Font",
+    border_focus=main,
+    border_normal='494949',
+    border_width=2,
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
@@ -200,15 +166,15 @@ floating_layout = layout.Floating(
         Match(title="pinentry"),  # GPG key password entry
     ]
 )
+
+# Other configurations
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True
-
 auto_minimize = True
 wmname = "qtile"
 
-    ## autostart ##
-
+# Autostart
 @hook.subscribe.startup_once
 def autostart():
     home = os.path.expanduser('~/.config/qtile/autostart.sh')
