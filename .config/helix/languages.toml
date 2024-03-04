@@ -11,7 +11,7 @@ comment-token = "//"
 indent = { tab-width = 4, unit = "    " }
 
 [[language]]
-name = "Python"
+name = "python"
 file-types = ["py"]
 comment-token = "#"
 indent = { tab-width = 4, unit = "    " }
