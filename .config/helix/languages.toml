@@ -11,6 +11,12 @@ comment-token = "//"
 indent = { tab-width = 4, unit = "    " }
 
 [[language]]
+name = "Python"
+file-types = ["py"]
+comment-token = "#"
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
 name = "bash"
 file-types = ["sh", "bash", ".zshrc", "conf"]
 shebangs = ["sh", "bash"]
