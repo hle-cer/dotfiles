@@ -63,7 +63,17 @@ select = "underline"
 "C-b" = "buffer_picker" # Opens a buffer picker
 "C-v" = ":vnew" # Vertical right split
 "C-h" = ":hnew" # Horizontal bottom split
+"C-d" = "delete_word_backward"
 "S-tab" = "goto_previous_buffer" # switches tabs
 "tab" = "goto_next_buffer" # switches tabs
+
 [keys.insert]
 "A-x" = "normal_mode" # Enter normal mode
+up = "no_op"
+down = "no_op"
+left = "no_op"
+right = "no_op"
+pageup = "no_op"
+pagedown = "no_op"
+home = "no_op"
+end = "no_op"
