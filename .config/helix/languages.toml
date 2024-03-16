@@ -4,6 +4,7 @@ file-types = ["cc", "cpp", "c++", "cxx"]
 comment-token = "//"
 indent = { tab-width = 4, unit = "    " }
 
+
 [[language]]
 name = "c"
 file-types = ["c"]
@@ -22,3 +23,21 @@ file-types = ["sh", "bash", ".zshrc", "conf"]
 shebangs = ["sh", "bash"]
 comment-token = "//"
 indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "rust"
+file-types = ["rs"]
+comment-token = "//"
+indent = { tab-width = 4, unit = "    " }
+
+[language-server.rust-analyzer]
+command = "rust-analyzer"
+
+[language-server.rust-analyzer.config]
+inlayHints.bindingModeHints.enable = false
+inlayHints.closingBraceHints.minLines = 10
+inlayHints.closureReturnTypeHints.enable = "with_block"
+inlayHints.discriminantHints.enable = "fieldless"
+inlayHints.lifetimeElisionHints.enable = "skip_trivial"
+inlayHints.typeHints.hideClosureInitialization = false
+
